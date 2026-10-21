@@ -69,6 +69,58 @@ export function renderAccessory(style, color) {
           <circle cx="20" cy="11.5" r="1" fill={color} />
         </g>
       );
+    case 'saber_blue':
+      return (
+        <g transform="rotate(25, 22, 26)">
+          <rect x="21.2" y="10" width="1.6" height="15" rx="0.8" fill="#4aa8ff" opacity="0.35" />
+          <rect x="21.5" y="10.5" width="1" height="14" rx="0.5" fill="#4aa8ff" />
+          <rect x="21.8" y="11" width="0.4" height="13" rx="0.2" fill="white" opacity="0.85" />
+          <rect x="21" y="25" width="2" height="4.5" rx="0.4" fill="#8a8f98" />
+          <rect x="21" y="26" width="2" height="0.6" fill="#444" />
+          <rect x="21" y="28" width="2" height="0.6" fill="#444" />
+        </g>
+      );
+    case 'saber_red':
+      return (
+        <g transform="rotate(25, 22, 26)">
+          <rect x="21.2" y="10" width="1.6" height="15" rx="0.8" fill="#ff3b3b" opacity="0.35" />
+          <rect x="21.5" y="10.5" width="1" height="14" rx="0.5" fill="#ff3b3b" />
+          <rect x="21.8" y="11" width="0.4" height="13" rx="0.2" fill="white" opacity="0.85" />
+          <rect x="21" y="25" width="2" height="4.5" rx="0.4" fill="#8a8f98" />
+          <rect x="21" y="26" width="2" height="0.6" fill="#444" />
+          <rect x="21" y="28" width="2" height="0.6" fill="#444" />
+        </g>
+      );
+    case 'saber_green':
+      return (
+        <g transform="rotate(25, 22, 26)">
+          <rect x="21.2" y="10" width="1.6" height="15" rx="0.8" fill="#4cd964" opacity="0.35" />
+          <rect x="21.5" y="10.5" width="1" height="14" rx="0.5" fill="#4cd964" />
+          <rect x="21.8" y="11" width="0.4" height="13" rx="0.2" fill="white" opacity="0.85" />
+          <rect x="21" y="25" width="2" height="4.5" rx="0.4" fill="#8a8f98" />
+          <rect x="21" y="26" width="2" height="0.6" fill="#444" />
+          <rect x="21" y="28" width="2" height="0.6" fill="#444" />
+        </g>
+      );
+    case 'blaster':
+      return (
+        <g transform="rotate(-10, 22, 26)">
+          <rect x="19" y="24" width="9" height="3" rx="0.8" fill="#4a4f57" />
+          <rect x="26" y="24.6" width="3.5" height="1.2" rx="0.4" fill="#2b2f35" />
+          <path d="M20,27 L21.5,27 L21,30.5 L19.3,30.5 Z" fill="#2b2f35" />
+          <rect x="22" y="23" width="3" height="1" rx="0.3" fill={color} />
+          <line x1="19.5" y1="24.8" x2="27" y2="24.8" stroke="white" strokeWidth="0.3" opacity="0.25" />
+        </g>
+      );
+    case 'jedi_robe':
+      return (
+        <g>
+          <path d="M9,20 L16,26 L23,20 L25,31 L7,31 Z" fill={color} opacity="0.9" />
+          <path d="M11,20.5 L16,25 L21,20.5" stroke="#000" strokeWidth="0.5" fill="none" opacity="0.25" />
+          <path d="M9,20 L16,26 L23,20" stroke="white" strokeWidth="0.3" fill="none" opacity="0.2" />
+          <rect x="12.5" y="26.5" width="7" height="1.4" rx="0.4" fill="#5a3b1e" />
+        </g>
+      );
     case 'none':
     default:
       return null;

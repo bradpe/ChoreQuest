@@ -50,6 +50,23 @@ export function renderFaceExtra(style) {
           <circle cx="10.5" cy="16" r="1" fill="#ff6b9d" opacity="0.6" />
         </g>
       );
+    case 'sith_eyes':
+      return (
+        <g>
+          <ellipse cx="12" cy="13.5" rx="2.2" ry="1.4" fill="#f4c20d" opacity="0.4" />
+          <ellipse cx="20" cy="13.5" rx="2.2" ry="1.4" fill="#f4c20d" opacity="0.4" />
+          <path d="M10.5,12 Q9,10 9.5,8.5 M11.5,15 Q9.5,16.5 10,18 M13,15 Q13,17 12,18.5" stroke="#5b2a6e" strokeWidth="0.35" fill="none" opacity="0.65" />
+          <path d="M21.5,12 Q23,10 22.5,8.5 M20.5,15 Q22.5,16.5 22,18 M19,15 Q19,17 20,18.5" stroke="#5b2a6e" strokeWidth="0.35" fill="none" opacity="0.65" />
+        </g>
+      );
+    case 'padawan_braid':
+      return (
+        <g>
+          <path d="M23,13 Q26.5,16 25,22 Q24.5,25 25.5,27" stroke="#8b5a2b" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+          <path d="M24.2,15.5 L25.8,16.5 M24.8,19 L26.4,20 M24.6,22.5 L26,23.5" stroke="#5a3b1e" strokeWidth="0.35" opacity="0.6" />
+          <circle cx="25.5" cy="27.3" r="0.9" fill="#c0392b" />
+        </g>
+      );
     case 'none':
     default:
       return null;

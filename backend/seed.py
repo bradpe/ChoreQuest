@@ -277,6 +277,12 @@ DEFAULT_AVATAR_ITEMS = [
     ("hat", "cat_ears", "Cat Ears", _U, _S, 40, False),
     ("hat", "halo", "Halo", _E, _K, 30, False),
     ("hat", "viking", "Viking Helmet", _E, _Q, None, False),
+    ("hat", "rebel_pilot", "Rebel Pilot Helmet", _U, _S, 45, False),
+    ("hat", "trooper", "Stormtrooper Helmet", _R, _S, 60, False),
+    ("hat", "bounty_hunter", "Bounty Hunter Helmet", _R, _K, 10, False),
+    ("hat", "sith_hood", "Sith Hood", _E, _Q, None, False),
+    ("hat", "jedi_hood", "Jedi Hood", _R, _X, 250, False),
+    ("hat", "princess_buns", "Princess Buns", _U, _S, 40, False),
     # ── Accessories ──
     ("accessory", "none", "None", _C, _F, None, True),
     ("accessory", "scarf", "Scarf", _U, _S, 30, False),
@@ -286,6 +292,11 @@ DEFAULT_AVATAR_ITEMS = [
     ("accessory", "wings", "Angel Wings", _E, _K, 21, False),
     ("accessory", "shield", "Shield", _R, _S, 60, False),
     ("accessory", "sword", "Sword", _L, _Q, None, False),
+    ("accessory", "saber_blue", "Blue Lightsaber", _E, _X, 400, False),
+    ("accessory", "saber_red", "Red Lightsaber", _E, _Q, None, False),
+    ("accessory", "saber_green", "Green Lightsaber", _E, _K, 21, False),
+    ("accessory", "blaster", "Blaster", _U, _S, 35, False),
+    ("accessory", "jedi_robe", "Jedi Robe", _R, _S, 60, False),
     # ── Face extras ──
     ("face_extra", "none", "None", _C, _F, None, True),
     ("face_extra", "freckles", "Freckles", _C, _F, None, True),
@@ -294,6 +305,8 @@ DEFAULT_AVATAR_ITEMS = [
     ("face_extra", "scar", "Battle Scar", _R, _Q, None, False),
     ("face_extra", "bandage", "Bandage", _U, _S, 25, False),
     ("face_extra", "stickers", "Stickers", _U, _S, 20, False),
+    ("face_extra", "sith_eyes", "Sith Eyes", _R, _Q, None, False),
+    ("face_extra", "padawan_braid", "Padawan Braid", _U, _S, 30, False),
     # ── Outfit patterns ──
     ("outfit_pattern", "none", "None", _C, _F, None, True),
     ("outfit_pattern", "stripes", "Stripes", _C, _F, None, True),
@@ -430,15 +443,20 @@ async def seed_database(db: AsyncSession):
         if migrated > 0:
             await db.commit()
 
-    # Seed avatar items catalogue
-    avatar_count = await db.execute(select(func.count()).select_from(AvatarItem))
-    if avatar_count.scalar() == 0:
-        for cat, item_id, name, rarity, method, value, default in DEFAULT_AVATAR_ITEMS:
-            db.add(AvatarItem(
-                category=cat, item_id=item_id, display_name=name,
-                rarity=rarity, unlock_method=method, unlock_value=value,
-                is_default=default,
-            ))
+    # Seed avatar items catalogue (also adds any items missing from existing DBs)
+    existing = await db.execute(select(AvatarItem.category, AvatarItem.item_id))
+    existing_keys = {(c, i) for c, i in existing.all()}
+    added = 0
+    for cat, item_id, name, rarity, method, value, default in DEFAULT_AVATAR_ITEMS:
+        if (cat, item_id) in existing_keys:
+            continue
+        db.add(AvatarItem(
+            category=cat, item_id=item_id, display_name=name,
+            rarity=rarity, unlock_method=method, unlock_value=value,
+            is_default=default,
+        ))
+        added += 1
+    if added:
         await db.commit()
 
     # One-time cleanup: deactivate stale rules created by migration that were

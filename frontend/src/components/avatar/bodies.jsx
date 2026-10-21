@@ -84,6 +84,21 @@ export function renderOutfitPattern(style, bodyShape) {
           ))}
         </g>
       );
+    case 'rebel_insignia':
+      return (
+        <g opacity="0.7">
+          <circle cx="16" cy="26" r="2.4" fill="none" stroke="#e8602c" strokeWidth="0.5" />
+          <path d="M16,28.2 L16,24.2 M16,25.6 L14,24 M16,25.6 L18,24 M16,26.8 L14.4,25.8 M16,26.8 L17.6,25.8" stroke="#e8602c" strokeWidth="0.45" fill="none" strokeLinecap="round" />
+        </g>
+      );
+    case 'hyperspace':
+      return (
+        <g opacity="0.45" stroke="white" strokeLinecap="round">
+          {[[22.5, 0.4, 3], [24, 0.3, 5], [25.5, 0.5, 4], [27, 0.3, 6], [28.5, 0.4, 3.5], [30, 0.3, 5]].map(([y, w, len], i) => (
+            <line key={i} x1={bounds.x + 1 + (i % 3)} y1={y} x2={bounds.x + 1 + (i % 3) + len + 2} y2={y} strokeWidth={w + 0.2} />
+          ))}
+        </g>
+      );
     case 'none':
     default:
       return null;

@@ -248,6 +248,7 @@ DEFAULT_AVATAR_ITEMS = [
     ("eyes", "heart_eyes", "Heart Eyes", _R, _K, 7, False),
     ("eyes", "dizzy", "Dizzy", _U, _S, 30, False),
     ("eyes", "closed", "Closed", _U, _S, 30, False),
+    ("eyes", "pilot_goggles", "Pilot Goggles", _U, _S, 35, False),
     # ── Mouth ──
     ("mouth", "smile", "Smile", _C, _F, None, True),
     ("mouth", "grin", "Grin", _C, _F, None, True),
@@ -263,6 +264,7 @@ DEFAULT_AVATAR_ITEMS = [
     ("mouth", "mask", "Mask", _U, _S, 40, False),
     ("mouth", "beard", "Beard", _R, _S, 50, False),
     ("mouth", "moustache", "Moustache", _R, _S, 40, False),
+    ("mouth", "breath_mask", "Breath Mask", _R, _Q, None, False),
     # ── Hats ──
     ("hat", "none", "None", _C, _F, None, True),
     ("hat", "crown", "Royal Crown", _E, _X, 500, False),
@@ -283,6 +285,13 @@ DEFAULT_AVATAR_ITEMS = [
     ("hat", "sith_hood", "Sith Hood", _E, _Q, None, False),
     ("hat", "jedi_hood", "Jedi Hood", _R, _X, 250, False),
     ("hat", "princess_buns", "Princess Buns", _U, _S, 40, False),
+    ("hat", "mandalorian", "Mandalorian Helmet", _R, _S, 70, False),
+    ("hat", "sith_lord", "Sith Lord Helmet", _E, _Q, None, False),
+    ("hat", "clone_trooper", "Clone Trooper Helmet", _R, _K, 14, False),
+    ("hat", "ewok_hood", "Ewok Hood", _U, _S, 40, False),
+    ("hat", "masters_ears", "Master's Ears", _R, _X, 300, False),
+    ("hat", "grievous_mask", "General Grievous Mask", _E, _Q, None, False),
+    ("hat", "rex_helmet", "Captain Rex Helmet", _E, _K, 21, False),
     # ── Accessories ──
     ("accessory", "none", "None", _C, _F, None, True),
     ("accessory", "scarf", "Scarf", _U, _S, 30, False),
@@ -297,6 +306,13 @@ DEFAULT_AVATAR_ITEMS = [
     ("accessory", "saber_green", "Green Lightsaber", _E, _K, 21, False),
     ("accessory", "blaster", "Blaster", _U, _S, 35, False),
     ("accessory", "jedi_robe", "Jedi Robe", _R, _S, 60, False),
+    ("accessory", "saber_purple", "Purple Lightsaber", _E, _Q, None, False),
+    ("accessory", "saber_double", "Double-Bladed Lightsaber", _L, _Q, None, False),
+    ("accessory", "bandolier", "Bandolier", _U, _S, 35, False),
+    ("accessory", "mando_jetpack", "Mandalorian Jetpack", _E, _K, 28, False),
+    ("accessory", "holocron", "Holocron", _R, _X, 300, False),
+    ("accessory", "grievous_cloak", "Grievous Cloak", _R, _S, 60, False),
+    ("accessory", "rex_blasters", "Rex's Twin Blasters", _R, _X, 300, False),
     # ── Face extras ──
     ("face_extra", "none", "None", _C, _F, None, True),
     ("face_extra", "freckles", "Freckles", _C, _F, None, True),
@@ -307,6 +323,7 @@ DEFAULT_AVATAR_ITEMS = [
     ("face_extra", "stickers", "Stickers", _U, _S, 20, False),
     ("face_extra", "sith_eyes", "Sith Eyes", _R, _Q, None, False),
     ("face_extra", "padawan_braid", "Padawan Braid", _U, _S, 30, False),
+    ("face_extra", "zabrak_tattoo", "Zabrak Tattoo", _R, _S, 50, False),
     # ── Outfit patterns ──
     ("outfit_pattern", "none", "None", _C, _F, None, True),
     ("outfit_pattern", "stripes", "Stripes", _C, _F, None, True),
@@ -314,6 +331,8 @@ DEFAULT_AVATAR_ITEMS = [
     ("outfit_pattern", "camo", "Camo", _U, _S, 30, False),
     ("outfit_pattern", "tie_dye", "Tie Dye", _R, _S, 35, False),
     ("outfit_pattern", "plaid", "Plaid", _U, _S, 25, False),
+    ("outfit_pattern", "rebel_insignia", "Rebel Insignia", _U, _S, 30, False),
+    ("outfit_pattern", "hyperspace", "Hyperspace Streaks", _R, _X, 150, False),
     # ── Pets ──
     ("pet", "none", "None", _C, _F, None, True),
     ("pet", "cat", "Cat", _R, _S, 80, False),
@@ -322,6 +341,11 @@ DEFAULT_AVATAR_ITEMS = [
     ("pet", "owl", "Owl", _R, _K, 14, False),
     ("pet", "bunny", "Bunny", _R, _S, 60, False),
     ("pet", "phoenix", "Phoenix", _L, _Q, None, False),
+    ("pet", "astromech", "Astromech Droid", _L, _X, 1000, False),
+    ("pet", "the_child", "The Child", _L, _Q, None, False),
+    ("pet", "porg", "Porg", _R, _S, 80, False),
+    ("pet", "tauntaun", "Tauntaun", _R, _K, 14, False),
+    ("pet", "mouse_droid", "Mouse Droid", _R, _S, 60, False),
 ]
 # fmt: on
 

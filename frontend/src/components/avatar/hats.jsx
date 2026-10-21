@@ -160,6 +160,83 @@ export function renderHat(style, color) {
           <path d="M9,5 Q16,0 23,5 L23,8 Q16,4 9,8 Z" fill={color} />
         </g>
       );
+    case 'mandalorian':
+      return (
+        <g>
+          <path d="M8.5,14 Q8,2.5 16,2.5 Q24,2.5 23.5,14 L21,14 L21,11 L11,11 L11,14 Z" fill={color} />
+          <rect x="10.5" y="7" width="11" height="2.2" rx="0.5" fill="#15151a" />
+          <rect x="15" y="7" width="2" height="6" rx="0.5" fill="#15151a" />
+          <path d="M11,4.5 Q13,3 16,3" stroke="white" strokeWidth="0.4" fill="none" opacity="0.4" />
+          <line x1="16" y1="2.7" x2="16" y2="6.5" stroke="#000" strokeWidth="0.3" opacity="0.2" />
+        </g>
+      );
+    case 'sith_lord':
+      return (
+        <g>
+          <path d="M8,14 Q7.5,1.5 16,1.5 Q24.5,1.5 24,14 L21,14 L21,10.5 L11,10.5 L11,14 Z" fill={color} />
+          <path d="M8.5,7.5 Q16,5.5 23.5,7.5 L23.5,8.8 Q16,7 8.5,8.8 Z" fill="#0a0a0a" opacity="0.8" />
+          <ellipse cx="12.7" cy="9.3" rx="2" ry="1.1" transform="rotate(15 12.7 9.3)" fill="#3a0a0a" />
+          <ellipse cx="19.3" cy="9.3" rx="2" ry="1.1" transform="rotate(-15 19.3 9.3)" fill="#3a0a0a" />
+          <polygon points="15,10 17,10 16,12.5" fill="#4a4a52" />
+          <path d="M11,3.5 Q13.5,2.2 16,2.2" stroke="white" strokeWidth="0.4" fill="none" opacity="0.25" />
+        </g>
+      );
+    case 'clone_trooper':
+      return (
+        <g>
+          <path d="M8.5,14 Q8,2.5 16,2.5 Q24,2.5 23.5,14 L21,14 L21,11 L11,11 L11,14 Z" fill="#f2f2f2" />
+          <rect x="10.5" y="7" width="11" height="2.2" rx="0.5" fill="#15151a" />
+          <rect x="15" y="7" width="2" height="5.5" rx="0.5" fill="#15151a" />
+          <rect x="10.5" y="10" width="2" height="1.4" fill={color} opacity="0.7" />
+          <rect x="19.5" y="10" width="2" height="1.4" fill={color} opacity="0.7" />
+          <path d="M11,4.5 Q13,3 16,3" stroke="#9aa5b1" strokeWidth="0.4" fill="none" opacity="0.5" />
+        </g>
+      );
+    case 'ewok_hood':
+      return (
+        <g>
+          <circle cx="10.5" cy="4.5" r="2.2" fill={color} />
+          <circle cx="21.5" cy="4.5" r="2.2" fill={color} />
+          <circle cx="10.5" cy="4.5" r="1.1" fill="#3b2a1a" opacity="0.6" />
+          <circle cx="21.5" cy="4.5" r="1.1" fill="#3b2a1a" opacity="0.6" />
+          <path d="M7.5,15 Q6.5,3.5 16,3.5 Q25.5,3.5 24.5,15 L22,15 Q22.5,8.5 16,7.5 Q9.5,8.5 10,15 Z" fill={color} />
+          <path d="M9,9 L10.5,10 M12,6 L13,7.5 M20,6 L19,7.5 M23,9 L21.5,10" stroke="#3b2a1a" strokeWidth="0.35" opacity="0.5" />
+        </g>
+      );
+    case 'masters_ears':
+      return (
+        <g>
+          <polygon points="9.3,10.5 1.5,8.5 9.3,15.5" fill={color} />
+          <polygon points="22.7,10.5 30.5,8.5 22.7,15.5" fill={color} />
+          <polygon points="8.3,11 4,9.8 8.3,14" fill="#000" opacity="0.12" />
+          <polygon points="23.7,11 28,9.8 23.7,14" fill="#000" opacity="0.12" />
+        </g>
+      );
+    case 'grievous_mask':
+      return (
+        <g>
+          <polygon points="9,6 10.5,0.5 13,5" fill="#2a2a30" />
+          <polygon points="23,6 21.5,0.5 19,5" fill="#2a2a30" />
+          <polygon points="14.5,4 16,-0.5 17.5,4" fill="#2a2a30" />
+          <path d="M9,11.5 Q8.5,3 16,2.5 Q23.5,3 23,11.5 Q16,10 9,11.5 Z" fill={color} />
+          <path d="M11.5,7 L14,8.6 L11.8,9.2 Z" fill="#f4c20d" />
+          <path d="M20.5,7 L18,8.6 L20.2,9.2 Z" fill="#f4c20d" />
+          <line x1="16" y1="3" x2="16" y2="9.5" stroke="#000" strokeWidth="0.35" opacity="0.3" />
+          <path d="M10.5,5 Q13,3.5 16,3.5" stroke="white" strokeWidth="0.4" fill="none" opacity="0.35" />
+        </g>
+      );
+    case 'rex_helmet':
+      return (
+        <g>
+          <path d="M8.5,14 Q8,2.5 16,2.5 Q24,2.5 23.5,14 L21,14 L21,11 L11,11 L11,14 Z" fill="#f2f2f2" />
+          <rect x="15" y="2.8" width="2" height="4.4" fill={color} />
+          <path d="M10.3,10 L10.3,5.5 Q10.8,4.5 12,4.2 L12,10 Z" fill={color} />
+          <path d="M21.7,10 L21.7,5.5 Q21.2,4.5 20,4.2 L20,10 Z" fill={color} />
+          <rect x="10.5" y="7.2" width="11" height="2" rx="0.5" fill="#15151a" />
+          <rect x="15" y="7.2" width="2" height="5.3" rx="0.5" fill="#15151a" />
+          <path d="M13,3.6 Q14.5,3 16,3" stroke="#9aa5b1" strokeWidth="0.35" fill="none" opacity="0.5" />
+        </g>
+      );
     case 'none':
     default:
       return null;

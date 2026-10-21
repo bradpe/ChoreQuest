@@ -67,6 +67,14 @@ export function renderFaceExtra(style) {
           <circle cx="25.5" cy="27.3" r="0.9" fill="#c0392b" />
         </g>
       );
+    case 'zabrak_tattoo':
+      return (
+        <g opacity="0.75" stroke="#8b1a1a" strokeWidth="0.45" fill="none" strokeLinecap="round">
+          <path d="M16,8 L16,11.5 M14,8.5 L14,11 M18,8.5 L18,11" />
+          <path d="M10.5,15.5 L12.5,17 M10.5,17 L12.5,18.5" />
+          <path d="M21.5,15.5 L19.5,17 M21.5,17 L19.5,18.5" />
+        </g>
+      );
     case 'none':
     default:
       return null;

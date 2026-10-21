@@ -106,6 +106,19 @@ function EyesGlasses({ color }) {
   );
 }
 
+function EyesPilotGoggles({ color }) {
+  return (
+    <>
+      <line x1="7.5" y1="13" x2="24.5" y2="13" stroke={color} strokeWidth="1" opacity="0.8" />
+      <circle cx="12.75" cy="13.5" r="3" fill="#7dd3fc" opacity="0.35" stroke={color} strokeWidth="1" />
+      <circle cx="19.25" cy="13.5" r="3" fill="#7dd3fc" opacity="0.35" stroke={color} strokeWidth="1" />
+      <line x1="15.75" y1="13.5" x2="16.25" y2="13.5" stroke={color} strokeWidth="0.9" />
+      <path d="M11,12 Q12,11.2 13.5,11.6" stroke="white" strokeWidth="0.4" fill="none" opacity="0.5" strokeLinecap="round" />
+      <path d="M17.5,12 Q18.5,11.2 20,11.6" stroke="white" strokeWidth="0.4" fill="none" opacity="0.5" strokeLinecap="round" />
+    </>
+  );
+}
+
 function EyesSunglasses({ color }) {
   return (
     <>
@@ -184,6 +197,7 @@ export const EYES_MAP = {
   angry: EyesAngry,
   dot: EyesDot,
   star: EyesStar,
+  pilot_goggles: EyesPilotGoggles,
   glasses: EyesGlasses,
   sunglasses: EyesSunglasses,
   eye_patch: EyesEyePatch,

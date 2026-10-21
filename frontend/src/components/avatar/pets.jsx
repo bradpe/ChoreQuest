@@ -172,6 +172,126 @@ function PetPhoenix({ colors, position }) {
   );
 }
 
+function PetAstromech({ colors, position }) {
+  const t = PET_OFFSETS[position] || PET_OFFSETS.right;
+  return (
+    <g transform={t}>
+      {/* Legs */}
+      <rect x="0.8" y="3.4" width="0.9" height="2.6" rx="0.3" fill={colors.ears} />
+      <rect x="4.3" y="3.4" width="0.9" height="2.6" rx="0.3" fill={colors.ears} />
+      {/* Body */}
+      <rect x="1.4" y="2.2" width="3.2" height="3.4" rx="0.5" fill={colors.body} />
+      {/* Dome */}
+      <path d="M1.4,2.2 Q1.4,0 3,0 Q4.6,0 4.6,2.2 Z" fill={colors.body} />
+      <line x1="1.4" y1="2.2" x2="4.6" y2="2.2" stroke={colors.accent} strokeWidth="0.25" />
+      {/* Lens */}
+      <circle cx="3.3" cy="1.1" r="0.45" fill="#1a1a1a" />
+      <circle cx="3.3" cy="1.1" r="0.2" fill="#d33" />
+      <path d="M1.8,0.9 Q2.2,0.3 2.7,0.2" stroke={colors.accent} strokeWidth="0.35" fill="none" />
+      {/* Panels */}
+      <rect x="1.9" y="3" width="1.1" height="1.2" rx="0.2" fill={colors.accent} opacity="0.85" />
+      <rect x="3.4" y="3" width="0.8" height="0.6" rx="0.15" fill={colors.accent} opacity="0.6" />
+      <line className="avatar-pet-tail" x1="3.4" y1="4.4" x2="4.1" y2="4.4" stroke={colors.tail} strokeWidth="0.3" />
+      {/* Feet */}
+      <rect x="0.4" y="5.7" width="1.7" height="0.5" rx="0.25" fill={colors.accent} />
+      <rect x="3.9" y="5.7" width="1.7" height="0.5" rx="0.25" fill={colors.accent} />
+    </g>
+  );
+}
+
+function PetChild({ colors, position }) {
+  const t = PET_OFFSETS[position] || PET_OFFSETS.right;
+  return (
+    <g transform={t}>
+      {/* Robe */}
+      <path d="M1.7,4.2 L4.3,4.2 L4.8,6 L1.2,6 Z" fill={colors.accent} />
+      <line x1="3" y1="4.3" x2="3" y2="6" stroke="#000" strokeWidth="0.2" opacity="0.2" />
+      {/* Ears */}
+      <path className="avatar-pet-tail" d="M1.4,2.8 Q-0.6,2.2 -0.4,1.6 Q0.6,1.6 1.5,2.2 Z" fill={colors.ears} />
+      <path className="avatar-pet-tail" d="M4.6,2.8 Q6.6,2.2 6.4,1.6 Q5.4,1.6 4.5,2.2 Z" fill={colors.ears} />
+      {/* Head */}
+      <ellipse cx="3" cy="2.8" rx="1.7" ry="1.6" fill={colors.body} />
+      {/* Eyes */}
+      <circle cx="2.2" cy="2.9" r="0.55" fill="#222" />
+      <circle cx="3.8" cy="2.9" r="0.55" fill="#222" />
+      <circle cx="2.4" cy="2.7" r="0.18" fill="white" />
+      <circle cx="4" cy="2.7" r="0.18" fill="white" />
+      <path d="M2.6,3.9 Q3,4.1 3.4,3.9" stroke={colors.tail} strokeWidth="0.2" fill="none" />
+    </g>
+  );
+}
+
+function PetPorg({ colors, position }) {
+  const t = PET_OFFSETS[position] || PET_OFFSETS.right;
+  return (
+    <g transform={t}>
+      {/* Feet */}
+      <path d="M2,5.8 L1.6,6.3 M2,5.8 L2.4,6.3 M4,5.8 L3.6,6.3 M4,5.8 L4.4,6.3" stroke={colors.accent} strokeWidth="0.3" strokeLinecap="round" />
+      {/* Body */}
+      <ellipse cx="3" cy="3.6" rx="2.5" ry="2.3" fill={colors.body} />
+      {/* Wings */}
+      <ellipse className="avatar-pet-tail" cx="0.7" cy="4" rx="0.7" ry="1.3" fill={colors.tail} />
+      <ellipse className="avatar-pet-tail" cx="5.3" cy="4" rx="0.7" ry="1.3" fill={colors.tail} />
+      {/* Face patch */}
+      <ellipse cx="3" cy="3.4" rx="1.7" ry="1.3" fill="white" opacity="0.85" />
+      {/* Eyes */}
+      <circle cx="2.2" cy="3.2" r="0.65" fill="#222" />
+      <circle cx="3.8" cy="3.2" r="0.65" fill="#222" />
+      <circle cx="2.4" cy="3" r="0.22" fill="white" />
+      <circle cx="4" cy="3" r="0.22" fill="white" />
+      {/* Beak */}
+      <polygon points="2.6,3.9 3,4.5 3.4,3.9" fill={colors.accent} />
+      {/* Tuft */}
+      <path d="M2.6,1.4 Q3,0.6 3.4,1.4" stroke={colors.ears} strokeWidth="0.35" fill="none" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function PetTauntaun({ colors, position }) {
+  const t = PET_OFFSETS[position] || PET_OFFSETS.right;
+  return (
+    <g transform={t}>
+      {/* Tail */}
+      <path className="avatar-pet-tail" d="M0.6,4.3 Q-0.8,3.8 -0.3,5.6" stroke={colors.tail} strokeWidth="0.7" fill="none" strokeLinecap="round" />
+      {/* Legs */}
+      <rect x="1.2" y="5" width="0.7" height="1.2" rx="0.3" fill={colors.ears} />
+      <rect x="3.6" y="5" width="0.7" height="1.2" rx="0.3" fill={colors.ears} />
+      {/* Body */}
+      <ellipse cx="2.8" cy="4.4" rx="2.3" ry="1.4" fill={colors.body} />
+      {/* Neck + head */}
+      <path d="M4.2,4 Q5.2,2.5 4.8,1.4" stroke={colors.body} strokeWidth="1.1" fill="none" strokeLinecap="round" />
+      <ellipse cx="4.9" cy="1.2" rx="1.2" ry="0.8" fill={colors.body} />
+      <ellipse cx="5.7" cy="1.5" rx="0.55" ry="0.4" fill={colors.accent} opacity="0.8" />
+      {/* Horns */}
+      <path d="M4.4,0.6 Q4,-0.4 4.7,-0.5" stroke={colors.ears} strokeWidth="0.35" fill="none" strokeLinecap="round" />
+      <path d="M5.1,0.5 Q5.1,-0.5 5.7,-0.5" stroke={colors.ears} strokeWidth="0.35" fill="none" strokeLinecap="round" />
+      {/* Eye */}
+      <circle cx="5.1" cy="1.1" r="0.28" fill="#222" />
+      <circle cx="5.2" cy="1" r="0.1" fill="white" />
+    </g>
+  );
+}
+
+function PetMouseDroid({ colors, position }) {
+  const t = PET_OFFSETS[position] || PET_OFFSETS.right;
+  return (
+    <g transform={t}>
+      {/* Antenna */}
+      <line className="avatar-pet-tail" x1="1.2" y1="3.3" x2="0.8" y2="2.2" stroke={colors.tail} strokeWidth="0.25" />
+      {/* Shell */}
+      <path d="M0.4,5 L0.4,3.8 Q0.4,3.2 1.2,3.2 L4.2,3.2 Q5.4,3.3 5.8,4.6 L5.8,5 Z" fill={colors.body} />
+      <path d="M0.4,5 L5.8,5 L5.8,5.4 L0.4,5.4 Z" fill={colors.ears} />
+      {/* Sensor */}
+      <circle cx="4.6" cy="4.2" r="0.5" fill="#1a1a1a" />
+      <circle cx="4.6" cy="4.2" r="0.22" fill={colors.accent} />
+      <rect x="1.4" y="3.8" width="1.6" height="0.5" rx="0.2" fill={colors.accent} opacity="0.7" />
+      {/* Wheels */}
+      <circle cx="1.5" cy="5.6" r="0.6" fill="#222" />
+      <circle cx="4.6" cy="5.6" r="0.6" fill="#222" />
+    </g>
+  );
+}
+
 const PET_MAP = {
   cat: PetCat,
   dog: PetDog,
@@ -179,6 +299,11 @@ const PET_MAP = {
   owl: PetOwl,
   bunny: PetBunny,
   phoenix: PetPhoenix,
+  astromech: PetAstromech,
+  the_child: PetChild,
+  porg: PetPorg,
+  tauntaun: PetTauntaun,
+  mouse_droid: PetMouseDroid,
 };
 
 const BIG_PETS = new Set(['dragon', 'phoenix']);

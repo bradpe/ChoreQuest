@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { api } from '../api/client';
 import { useAuth } from '../hooks/useAuth';
+import AvatarDisplay from '../components/AvatarDisplay';
 import {
   Lock,
   Star,
@@ -49,6 +50,26 @@ const CATEGORY_LABELS = {
 };
 
 const CATEGORY_ORDER = ['hat', 'pet', 'accessory', 'hair', 'eyes', 'mouth', 'face_extra', 'outfit_pattern', 'head'];
+
+const PREVIEW_BASE = {
+  head: 'round', hair: 'short', eyes: 'normal', mouth: 'smile', body: 'regular',
+  hat: 'none', accessories: [], face_extra: 'none', outfit_pattern: 'none', pet: 'none',
+  bg_color: '#1f2a44', head_color: '#e8b88a', hair_color: '#4a3728', body_color: '#6b7280',
+  hat_color: '#9aa5b1', accessory_color: '#9aa5b1',
+  pet_color_body: '#d8d8dc', pet_color_ears: '#8a8f98', pet_color_tail: '#666a72', pet_color_accent: '#3b82f6',
+};
+
+/** A default avatar wearing just this item, so the shop shows what it looks like. */
+function ItemPreview({ item }) {
+  const config = { ...PREVIEW_BASE };
+  if (item.category === 'accessory') config.accessories = [item.item_id];
+  else config[item.category] = item.item_id;
+  return (
+    <div className="flex justify-center mb-2">
+      <AvatarDisplay config={config} size="lg" />
+    </div>
+  );
+}
 
 function unlockLabel(item) {
   switch (item.unlock_method) {
@@ -221,6 +242,8 @@ export default function AvatarShop() {
                       owned ? 'opacity-70' : ''
                     }`}
                   >
+                    <ItemPreview item={item} />
+
                     <div className="flex items-start justify-between gap-1 mb-2">
                       <span className="text-cream text-xs font-medium leading-tight">
                         {item.display_name}

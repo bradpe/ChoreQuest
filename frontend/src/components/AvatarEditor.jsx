@@ -57,7 +57,7 @@ const EYES_OPTIONS = [
   { id: 'crying', label: 'Crying' },
   { id: 'heart_eyes', label: 'Hearts' },
   { id: 'dizzy', label: 'Dizzy' },
-  { id: 'closed', label: 'Closed' },
+  { id: 'closed', label: 'Closed' },  { id: 'pilot_goggles', label: 'Pilot Goggles' },
 ];
 
 const MOUTH_OPTIONS = [
@@ -74,7 +74,7 @@ const MOUTH_OPTIONS = [
   { id: 'whistle', label: 'Whistle' },
   { id: 'mask', label: 'Mask' },
   { id: 'beard', label: 'Beard' },
-  { id: 'moustache', label: 'Moustache' },
+  { id: 'moustache', label: 'Moustache' },  { id: 'breath_mask', label: 'Breath Mask' },
 ];
 
 const BODY_OPTIONS = [
@@ -96,7 +96,19 @@ const HAT_OPTIONS = [
   { id: 'bunny_ears', label: 'Bunny Ears' },
   { id: 'cat_ears', label: 'Cat Ears' },
   { id: 'halo', label: 'Halo' },
-  { id: 'viking', label: 'Viking' },
+  { id: 'viking', label: 'Viking' },  { id: 'rebel_pilot', label: 'Rebel Pilot' },
+  { id: 'trooper', label: 'Stormtrooper' },
+  { id: 'bounty_hunter', label: 'Bounty Hunter' },
+  { id: 'sith_hood', label: 'Sith Hood' },
+  { id: 'jedi_hood', label: 'Jedi Hood' },
+  { id: 'princess_buns', label: 'Princess Buns' },
+  { id: 'mandalorian', label: 'Mandalorian' },
+  { id: 'sith_lord', label: 'Sith Lord' },
+  { id: 'clone_trooper', label: 'Clone Trooper' },
+  { id: 'ewok_hood', label: 'Ewok Hood' },
+  { id: 'masters_ears', label: 'Master Ears' },
+  { id: 'grievous_mask', label: 'Grievous' },
+  { id: 'rex_helmet', label: 'Rex Helmet' },
 ];
 
 const ACCESSORY_OPTIONS = [
@@ -106,7 +118,18 @@ const ACCESSORY_OPTIONS = [
   { id: 'cape', label: 'Cape' },
   { id: 'wings', label: 'Wings' },
   { id: 'shield', label: 'Shield' },
-  { id: 'sword', label: 'Sword' },
+  { id: 'sword', label: 'Sword' },  { id: 'saber_blue', label: 'Blue Saber' },
+  { id: 'saber_red', label: 'Red Saber' },
+  { id: 'saber_green', label: 'Green Saber' },
+  { id: 'blaster', label: 'Blaster' },
+  { id: 'jedi_robe', label: 'Jedi Robe' },
+  { id: 'saber_purple', label: 'Purple Saber' },
+  { id: 'saber_double', label: 'Double Saber' },
+  { id: 'bandolier', label: 'Bandolier' },
+  { id: 'mando_jetpack', label: 'Mando Jetpack' },
+  { id: 'holocron', label: 'Holocron' },
+  { id: 'grievous_cloak', label: 'Grievous Cloak' },
+  { id: 'rex_blasters', label: 'Rex Blasters' },
 ];
 
 const FACE_EXTRA_OPTIONS = [
@@ -116,7 +139,9 @@ const FACE_EXTRA_OPTIONS = [
   { id: 'face_paint', label: 'Face Paint' },
   { id: 'scar', label: 'Scar' },
   { id: 'bandage', label: 'Bandage' },
-  { id: 'stickers', label: 'Stickers' },
+  { id: 'stickers', label: 'Stickers' },  { id: 'sith_eyes', label: 'Sith Eyes' },
+  { id: 'padawan_braid', label: 'Padawan Braid' },
+  { id: 'zabrak_tattoo', label: 'Zabrak Tattoo' },
 ];
 
 const OUTFIT_PATTERN_OPTIONS = [
@@ -125,7 +150,8 @@ const OUTFIT_PATTERN_OPTIONS = [
   { id: 'stars', label: 'Stars' },
   { id: 'camo', label: 'Camo' },
   { id: 'tie_dye', label: 'Tie Dye' },
-  { id: 'plaid', label: 'Plaid' },
+  { id: 'plaid', label: 'Plaid' },  { id: 'rebel_insignia', label: 'Rebel Insignia' },
+  { id: 'hyperspace', label: 'Hyperspace' },
 ];
 
 const PET_OPTIONS = [
@@ -135,7 +161,11 @@ const PET_OPTIONS = [
   { id: 'dragon', label: 'Dragon' },
   { id: 'owl', label: 'Owl' },
   { id: 'bunny', label: 'Bunny' },
-  { id: 'phoenix', label: 'Phoenix' },
+  { id: 'phoenix', label: 'Phoenix' },  { id: 'astromech', label: 'Astromech Droid' },
+  { id: 'the_child', label: 'The Child' },
+  { id: 'porg', label: 'Porg' },
+  { id: 'tauntaun', label: 'Tauntaun' },
+  { id: 'mouse_droid', label: 'Mouse Droid' },
 ];
 
 const PET_POSITION_OPTIONS = [

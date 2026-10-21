@@ -110,6 +110,20 @@ function MouthMoustache({ color }) {
   );
 }
 
+function MouthBreathMask({ color }) {
+  return (
+    <>
+      <path d="M11.5,16 L20.5,16 L19.5,21 Q16,22 12.5,21 Z" fill="#2b2b30" />
+      <path d="M11.5,16 L20.5,16 L19.8,17.2 L12.2,17.2 Z" fill="#45454d" />
+      <rect x="14.8" y="17.6" width="2.4" height="1.6" rx="0.3" fill={color} opacity="0.75" />
+      <line x1="13.2" y1="18" x2="13.2" y2="20" stroke="#8a8a92" strokeWidth="0.35" />
+      <line x1="14" y1="18.4" x2="14" y2="20.3" stroke="#8a8a92" strokeWidth="0.35" />
+      <line x1="18" y1="18.4" x2="18" y2="20.3" stroke="#8a8a92" strokeWidth="0.35" />
+      <line x1="18.8" y1="18" x2="18.8" y2="20" stroke="#8a8a92" strokeWidth="0.35" />
+    </>
+  );
+}
+
 export const MOUTH_MAP = {
   smile: MouthSmile,
   grin: MouthGrin,
@@ -122,6 +136,7 @@ export const MOUTH_MAP = {
   braces: MouthBraces,
   vampire: MouthVampire,
   whistle: MouthWhistle,
+  breath_mask: MouthBreathMask,
   mask: MouthMask,
   beard: MouthBeard,
   moustache: MouthMoustache,

@@ -111,6 +111,27 @@ function headTransform(dy, sx) {
   return parts.join(' ');
 }
 
+/* Full-face helmets are drawn for a round head (top y=2.2, chin y=22.5). Stretch
+   them to each head's own top/bottom so no chin or forehead peeks out. */
+const FULL_FACE_HATS = new Set([
+  'rebel_pilot', 'trooper', 'bounty_hunter', 'mandalorian', 'sith_lord',
+  'clone_trooper', 'rex_helmet', 'grievous_mask',
+]);
+const HEAD_EXTENTS = {
+  round: [6, 22], oval: [5, 23], square: [6, 22], diamond: [5, 23], heart: [6, 22],
+  long: [3, 23], triangle: [5, 22], pear: [5.5, 23], wide: [7, 22.5],
+};
+/* Triangle heads are widest at the chin, so helmets can't use the narrow hat width. */
+const FULL_FACE_WIDTH = { triangle: 1.04 };
+
+function fullFaceHatTransform(headShape, sx) {
+  const [top, bottom] = HEAD_EXTENTS[headShape] || HEAD_EXTENTS.round;
+  const hatTop = Math.max(0.2, top - 3.8);
+  const sy = (bottom + 0.5 - hatTop) / 20.3;
+  const parts = [`translate(16,${hatTop - 2.2 * sy})`, `scale(${FULL_FACE_WIDTH[headShape] || sx || 1},${sy})`, 'translate(-16,0)'];
+  return parts.join(' ');
+}
+
 /* ── Main SVG avatar ── */
 function SvgAvatar({ config, size }) {
   const bgColor = config.bg_color || '#1a1a2e';
@@ -198,7 +219,7 @@ function SvgAvatar({ config, size }) {
       </g>
 
       {/* Hat (on top of hair) — shifted & scaled to align with head shape */}
-      <g transform={headTransform(off.hat, off.width)}>
+      <g transform={FULL_FACE_HATS.has(hatStyle) ? fullFaceHatTransform(headShape, off.width) : headTransform(off.hat, off.width)}>
         {renderHat(hatStyle, hatColor)}
       </g>
 

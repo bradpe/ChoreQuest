@@ -72,6 +72,11 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
+  // Only handle same-origin requests; let the browser handle anything else natively
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
   // Let the browser handle auth requests natively (preserves cookies reliably)
   if (url.pathname.startsWith('/api/auth')) {
     return;

@@ -970,7 +970,19 @@ async def verify_chore(
             detail="No completed assignment found to verify for this chore today",
         )
 
+    return await _verify_assignment(db, assignment, user, today, now)
+
+
+async def _verify_assignment(
+    db: AsyncSession,
+    assignment: ChoreAssignment,
+    user: User,
+    today: date,
+    now: datetime,
+) -> AssignmentResponse:
+    """Mark a completed assignment verified and award XP/streak for day `today`."""
     chore = assignment.chore
+    chore_id = chore.id
     base_points = chore.points
 
     assignment.status = AssignmentStatus.verified
@@ -1035,8 +1047,8 @@ async def verify_chore(
             reference_type="pet",
         ))
 
-    if kid.last_streak_date == today:
-        pass
+    if kid.last_streak_date is not None and kid.last_streak_date >= today:
+        pass  # same day, or a backfilled day older than the current streak
     elif kid.last_streak_date is not None:
         gap = (today - kid.last_streak_date).days
         if gap == 1:
@@ -1137,6 +1149,39 @@ async def verify_chore(
 
     assignment = await _reload_assignment_with_relations(db, assignment.id)
     return AssignmentResponse.model_validate(assignment)
+
+
+@router.post("/assignments/{assignment_id}/backfill", response_model=AssignmentResponse)
+async def backfill_assignment(
+    assignment_id: int,
+    db: AsyncSession = Depends(get_db),
+    user: User = Depends(require_parent),
+):
+    """Parent marks a missed quest from a past day as done (completed + verified)."""
+    today = date.today()
+    now = datetime.now(timezone.utc)
+
+    result = await db.execute(
+        select(ChoreAssignment)
+        .where(ChoreAssignment.id == assignment_id)
+        .options(selectinload(ChoreAssignment.chore))
+    )
+    assignment = result.scalar_one_or_none()
+    if assignment is None:
+        raise HTTPException(status_code=404, detail="Assignment not found")
+    if assignment.date >= today:
+        raise HTTPException(status_code=400, detail="Only past days can be backfilled")
+    if assignment.status not in (AssignmentStatus.pending, AssignmentStatus.completed):
+        raise HTTPException(status_code=400, detail="Assignment is already done or skipped")
+
+    if assignment.status == AssignmentStatus.pending:
+        assignment.status = AssignmentStatus.completed
+        assignment.completed_at = datetime.combine(
+            assignment.date, now.time(), tzinfo=timezone.utc
+        )
+        assignment.updated_at = now
+
+    return await _verify_assignment(db, assignment, user, assignment.date, now)
 
 
 @router.post("/{chore_id}/uncomplete", response_model=AssignmentResponse)

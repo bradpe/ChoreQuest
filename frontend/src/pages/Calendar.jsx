@@ -92,6 +92,7 @@ export default function Calendar() {
   const [selectedKid, setSelectedKid] = useState('');
   const [tradeSubmitting, setTradeSubmitting] = useState(false);
   const [tradeError, setTradeError] = useState('');
+  const [backfillingId, setBackfillingId] = useState(null);
   const [removingId, setRemovingId] = useState(null);
   const [removeTarget, setRemoveTarget] = useState(null);
   const [cleaning, setCleaning] = useState(false);
@@ -202,6 +203,18 @@ export default function Calendar() {
       setError(err.message || 'Failed to remove quest');
     } finally {
       setRemovingId(null);
+    }
+  };
+
+  const backfillAssignment = async (assignmentId) => {
+    setBackfillingId(assignmentId);
+    try {
+      await api(`/api/chores/assignments/${assignmentId}/backfill`, { method: 'POST' });
+      fetchCalendar();
+    } catch (err) {
+      setError(err.message || 'Failed to mark quest done');
+    } finally {
+      setBackfillingId(null);
     }
   };
 
@@ -382,6 +395,26 @@ export default function Calendar() {
                           >
                             <ArrowRightLeft size={12} />
                             Trade
+                          </button>
+                        )}
+
+                        {/* Parents can mark missed past-day quests as done */}
+                        {!isKid && dayStr < new Date().toISOString().slice(0, 10) &&
+                          (a.status === 'pending' || a.status === 'completed') && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              backfillAssignment(a.id);
+                            }}
+                            disabled={backfillingId === a.id}
+                            className="mt-1.5 mr-3 inline-flex items-center gap-1 text-xs font-medium text-emerald hover:text-emerald/80 transition-colors"
+                          >
+                            {backfillingId === a.id ? (
+                              <Loader2 size={12} className="animate-spin" />
+                            ) : (
+                              <CheckCheck size={12} />
+                            )}
+                            Mark done
                           </button>
                         )}
 

@@ -1181,7 +1181,49 @@ async def backfill_assignment(
         )
         assignment.updated_at = now
 
-    return await _verify_assignment(db, assignment, user, assignment.date, now)
+    response = await _verify_assignment(db, assignment, user, assignment.date, now)
+    await _recompute_streak(db, assignment.user_id, today)
+    return response
+
+
+async def _recompute_streak(db: AsyncSession, user_id: int, today: date) -> None:
+    """Rebuild a kid's streak from verified days after a past day was backfilled.
+
+    Walks back from the most recent verified day; vacation days bridge a gap
+    without counting. Never lowers an existing streak, since freezes can have
+    preserved it across gaps the history alone does not show.
+    """
+    from backend.routers.vacation import is_vacation_day
+
+    rows = await db.execute(
+        select(ChoreAssignment.date).where(
+            ChoreAssignment.user_id == user_id,
+            ChoreAssignment.status == AssignmentStatus.verified,
+            ChoreAssignment.date <= today,
+        )
+    )
+    days = {r[0] for r in rows.all()}
+    if not days:
+        return
+    end = max(days)
+    earliest = min(days)
+
+    count = 1
+    cursor = end - timedelta(days=1)
+    while cursor >= earliest:
+        if cursor in days:
+            count += 1
+        elif not await is_vacation_day(db, cursor):
+            break
+        cursor -= timedelta(days=1)
+
+    kid = (await db.execute(select(User).where(User.id == user_id))).scalar_one()
+    if kid.last_streak_date is None or end > kid.last_streak_date:
+        kid.last_streak_date = end
+    kid.current_streak = max(count, kid.current_streak or 0)
+    if kid.current_streak > kid.longest_streak:
+        kid.longest_streak = kid.current_streak
+    await db.commit()
 
 
 @router.post("/{chore_id}/uncomplete", response_model=AssignmentResponse)
